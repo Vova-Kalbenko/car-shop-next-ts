@@ -1,12 +1,9 @@
 import { Combobox, Transition } from "@headlessui/react";
-import { SearchManufacture } from "@/types";
+import { SearchManuFacturerProps } from "@/types";
 import { useState, Fragment } from "react";
 import { manufacturers } from "@/constans";
 import Image from "next/image";
-const SearchManufacture = ({
-  manufacture,
-  setManufacture,
-}: SearchManufacture) => {
+const SearchManufacture = ({selected, setSelected}: SearchManuFacturerProps) => {
   const [query, setQuery] = useState("");
   const fitlteredManufacturers =
     query === ""
@@ -18,10 +15,9 @@ const SearchManufacture = ({
             .trim()
             .includes(query.toLowerCase().replace(/\s+/g, "").trim())
         );
-
   return (
     <div className="search-manufacturer">
-      <Combobox value={manufacture} onChange={setManufacture}>
+      <Combobox value={selected} onChange={setManuFacturer}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
